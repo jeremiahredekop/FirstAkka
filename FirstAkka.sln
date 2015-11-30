@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstAkka", "FirstAkka\FirstAkka.csproj", "{D59B03AF-0170-44F6-B02C-8521397549BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D59B03AF-0170-44F6-B02C-8521397549BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D59B03AF-0170-44F6-B02C-8521397549BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D59B03AF-0170-44F6-B02C-8521397549BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D59B03AF-0170-44F6-B02C-8521397549BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
