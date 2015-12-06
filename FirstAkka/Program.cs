@@ -2,6 +2,7 @@
 using System.Linq;
 using Akka.Actor;
 using Akka.Util.Internal;
+using ColoredConsole;
 using FirstAkka.Actors;
 using FirstAkka.Messages;
 
@@ -15,10 +16,11 @@ namespace FirstAkka
             _movieStreamingActorSystem = ActorSystem.Create("MovieStreamingActorSystem");
             Console.WriteLine("Actor system created");
 
-            Props playbackActorProps = Props.Create<PlaybackActor>();
+            
+            var userActorProps = Props.Create<UserActor>();
+            IActorRef userActorRef = _movieStreamingActorSystem.ActorOf(userActorProps, "UserActor");
 
-            IActorRef playbackActorRef = _movieStreamingActorSystem.ActorOf(playbackActorProps, "PlaybackActor");
-
+            
             new[]
             {
                 new PlayMovieMessage(42, "Akka.NET, the movie"),
@@ -27,9 +29,22 @@ namespace FirstAkka
                 new PlayMovieMessage(1, "Codenan the Destroyer")
             }
             .ToList()
-            .ForEach(playbackActorRef.Tell);
+            .ForEach(m =>
+            {
+                Console.ReadLine();
+                ColorConsole.WriteLine($"Sending a Playmovie message: {m.MovieTitle} / ID: {m.UserId}".Yellow());
+                userActorRef.Tell(m);
+            });
 
-            playbackActorRef.Tell(PoisonPill.Instance);
+            Enumerable.Range(1,4)
+                .ToList()
+                .ForEach(i =>
+                {
+                    Console.ReadLine();
+                    ColoredConsole.ColorConsole.WriteLine("Sending a stopmovie message");
+                    userActorRef.Tell(new StopMovieMessage());
+                });
+            
 
             Console.ReadLine();
             _movieStreamingActorSystem.Shutdown();
